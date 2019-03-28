@@ -1,0 +1,35 @@
+<div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <form (ngSubmit)="onSubmit(f)" #f="ngForm"> 
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input 
+               type="email" 
+               id="email" 
+               class="form-control"
+               ngModel
+               name="email"
+               required
+               email
+               #email="ngModel">
+               <p class="hold-block" *ngIf=" !email.valid && email.touched">Please enter valid email</p>    
+        </div>
+        <div class="from-group">
+            <label for="password">Passworn</label>
+            <input 
+                type="password" 
+                id="password" 
+                class="form-control"
+                ngModel
+                name="password"
+                required
+                minlength="6"
+                #password="ngModel">
+                <p class="hold-block" *ngIf=" !password.valid && password.touched">Please enter valid Password (more than 6 digits )</p>    
+        </div>
+        <div>
+            <button class="btn btn-primary" type="submit" [disabled]="!f.valid">Sing In</button>
+        </div>
+      </form>
+    </div>
+  </div>

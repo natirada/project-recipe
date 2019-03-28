@@ -1,0 +1,32 @@
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a style="cursor: pointer" class="navbar-brand" routerLink="/">Recipe Book</a>
+        </div>
+        <div class="navbar-default">
+            <ul class="nav navbar-nav">
+                <li routerLinkActive="active">
+                    <a style="cursor: pointer" routerLink="/recipe">Recipes</a>
+                </li>
+                <li routerLinkActive="active">
+                    <a style="cursor: pointer" routerLink="/shopping-list">Shopping List</a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <ng-template [ngIf]="!ifAuthenticated()">
+                        <li><a style="cursor: pointer" routerLink="/signup">Register</a></li>
+                        <li><a style="cursor: pointer" routerLink="/signin">SignIn</a></li>
+                </ng-template>
+                <li><a style="cursor: pointer" *ngIf="ifAuthenticated()" (click)="onLogout()">Log Out</a></li>
+                <li class="dropdown" appDropdown *ngIf="ifAuthenticated()">
+                    <a style="cursor: pointer" class="drop-down-toggle" role="button">Manage <span class="caret"></span></a>
+                    <ul class="dropdown-menu" >
+                        <li><a style="cursor: pointer" (click)="onSaveData()">Save Data</a></li>
+                        <li><a style="cursor: pointer" (click)="onLoadData()">Fetch Data</a></li>
+                        
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
